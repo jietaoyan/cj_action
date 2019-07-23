@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: service-eureka
+  cloud:
+    config:
+      profile: dev
+      label: master
+      uri: 'http://service-config:13888/'
+      fail-fast: true
+#      retry:
+#        max-interval: 600000
+#        max-attempts: 10

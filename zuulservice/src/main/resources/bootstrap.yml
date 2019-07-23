@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: service-zuul
+  cloud:
+    config:
+      profile: dev
+      label: master
+      uri: 'http://service-config:13888/'
+      fail-fast: true

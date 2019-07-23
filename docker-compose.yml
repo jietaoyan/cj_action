@@ -1,0 +1,51 @@
+version: '2'
+services:
+  service-config:
+    image: reg.ecidi.com/bccm/configservice
+    restart: always
+    ports:
+      - 13888:13888
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+  service-eureka:
+    image: reg.ecidi.com/bccm/eurekaservice
+    restart: always
+    ports:
+      - 13100:13100
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "10"
+  service-zuul:
+      image: reg.ecidi.com/bccm/zuulservice
+      restart: always
+      ports:
+        - 13200:13200
+      depends_on:
+        - service-eureka
+      logging:
+        options:
+          max-size: "10m"
+          max-file: "10"
+  service-project:
+            image: reg.ecidi.com/bccm/projectservices
+            restart: always
+            ports:
+              - 13600:13600
+            depends_on:
+              - service-eureka
+            logging:
+              options:
+                max-size: "10m"
+                max-file: "10"
+#  service-portal:
+#            image: reg.ecidi.com/bccm/frontend:develop
+#            restart: always
+#            ports:
+#              - 80:80
+#            logging:
+#              options:
+#                max-size: "10m"
+#                max-file: "10"

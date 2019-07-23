@@ -1,0 +1,20 @@
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: 'http://admin:admin@eureka-service:11100/eureka/'
+
+spring:
+  application:
+    name: 'service-config'
+  cloud:
+    config:
+      server:
+        git:
+          uri: 'http://git.ecidi.com/bccm/config.git'
+          search-paths: '{application}'
+          username: 'root'
+          password: '12345678'
+
+
+server:
+  port: '13888'
